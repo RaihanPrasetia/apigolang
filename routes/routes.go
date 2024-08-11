@@ -1,7 +1,8 @@
 package routes
 
 import (
-	"loginApi/controllers" // Adjust the import path as necessary
+	// Adjust the import path as necessary
+	"loginApi/controllers"
 	"loginApi/middleware"
 	"net/http"
 )
@@ -20,4 +21,7 @@ func RegisterRoutes() {
 	http.HandleFunc("/categories", controllers.GetCategory)
 	http.Handle("/create/categories", middleware.JWTAuth(http.HandlerFunc(controllers.CreateCategory)))
 	http.Handle("/update/categories/", middleware.JWTAuth(http.HandlerFunc(controllers.UpdateCategory)))
+
+	http.HandleFunc("/create/message", controllers.CreateMessage)
+
 }
